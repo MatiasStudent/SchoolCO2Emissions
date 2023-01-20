@@ -1,0 +1,62 @@
+class ClassroomLightingAssessmentV2 {
+  //declare instance variables
+  //Luke:
+  private int numLightbulbs;
+  private int wattage;
+  private int hoursPerDay;
+  private int schoolDaysPerMonth;
+  private int schoolDaysPerYear;
+  private double co2ePerKwh;
+  private int numStudents;
+
+  //create constructor for classroom light
+  //Matias:
+  public ClassroomLightingAssessmentV2(int numLightbulbs, int wattage, int hoursPerDay, int schoolDaysPerMonth, int schoolDaysPerYear, double co2ePerKwh, int numStudents) {
+    this.numLightbulbs = numLightbulbs;
+    this.wattage = wattage;
+    this.hoursPerDay = hoursPerDay;
+    this.schoolDaysPerMonth = schoolDaysPerMonth;
+    this.schoolDaysPerYear = schoolDaysPerYear;
+    this.co2ePerKwh = co2ePerKwh;
+    this.numStudents = numStudents;
+  }
+
+  //create getter methods
+  //Diego:
+  public int getNumLightbulbs() {
+    return numLightbulbs;
+  }
+
+  public int getWattage() {
+    return wattage;
+  }
+
+  public int getHoursPerDay() {
+    return hoursPerDay;
+  }
+
+  public int getSchoolDaysPerMonth() {
+    return schoolDaysPerMonth;
+  }
+
+  public int getSchoolDaysPerYear() {
+    return schoolDaysPerYear;
+  }
+
+  public double getCo2ePerKwh() {
+    return co2ePerKwh;
+  }
+
+  public int getNumStudents() {
+    return numStudents;
+  }
+  //Matias, Diego, Luke
+  public String toString(Double kwhPerMonth, Double kwhPerYear, Double kgCo2ePerYear, Double kgCo2ePerStudentPerYear, int numTrees){
+    return "Electricity used in classroom for lighting (kWh/month): " + kwhPerMonth + "\n" + 
+               "Electricity used in classroom for lighting (kWh/year): " + kwhPerYear + "\n" + 
+               "Yearly GHG emissions produced by classroom lights (kg CO2e/year): " + kgCo2ePerYear + "\n" +
+               "Yearly GHG emissions produced by classroom lights per student (kg CO2e/student/year): " + kgCo2ePerStudentPerYear + "\n" +
+               "Number of trees needed to absorb the emissions: " + numTrees;
+
+  }
+}
