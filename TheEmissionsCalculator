@@ -1,0 +1,58 @@
+public class TheEmissionsCalculator {
+    public static void main(String[] args) {
+        // Create school objects
+        //Diego:
+        ClassroomLightingAssessmentV2 Loyola = new ClassroomLightingAssessmentV2(2100, 15, 6, 20, 200, 0.180, 30);
+        //Luke:
+        ClassroomLightingAssessmentV2 Fraser = new ClassroomLightingAssessmentV2(3300, 15, 6, 20, 200, 0.180, 30);
+        //Matias:
+        ClassroomLightingAssessmentV2 Gonzaga = new ClassroomLightingAssessmentV2(2600, 15, 6, 20, 200, 0.180, 30);
+        // Call the method to perform calculations
+        //Matias, Diego, Luke
+        Calculations resultsL = performCalculations(Loyola);
+        System.out.println(Loyola.toString(resultsL.kwhPerMonth, resultsL.kwhPerYear, resultsL.kgCo2ePerYear, resultsL.kgCo2ePerStudentPerYear, resultsL.numTrees));
+        System.out.println();
+        Calculations resultsF = performCalculations(Fraser);
+        System.out.println(Fraser.toString(resultsF.kwhPerMonth, resultsF.kwhPerYear, resultsF.kgCo2ePerYear, resultsF.kgCo2ePerStudentPerYear, resultsF.numTrees));
+        System.out.println();
+        Calculations resultsG = performCalculations(Gonzaga);
+        System.out.println(Gonzaga.toString(resultsG.kwhPerMonth, resultsG.kwhPerYear, resultsG.kgCo2ePerYear, resultsG.kgCo2ePerStudentPerYear, resultsG.numTrees));
+
+ 
+
+    }
+
+    public static class Calculations{
+        //declare public variables for calculator
+        //Luke:
+        public double kwhPerMonth;
+        public double kwhPerYear;
+        public double kgCo2ePerYear;
+        public double kgCo2ePerStudentPerYear;
+        public int numTrees;
+        //create constructor for calculations
+        //Matias:
+        public Calculations(double kwhPerMonth, double kwhPerYear, double kgCo2ePerYear, double kgCo2ePerStudentPerYear, int numTrees){
+            this.kwhPerMonth = kwhPerMonth;
+            this.kwhPerYear = kwhPerYear;
+            this.kgCo2ePerYear = kgCo2ePerYear;
+            this.kgCo2ePerStudentPerYear = kgCo2ePerStudentPerYear;
+            this.numTrees = numTrees;
+        }
+    }
+
+    // Create a separate method for the calculations
+    //Diego:
+    public static Calculations performCalculations(ClassroomLightingAssessmentV2 assess) {
+        // Calculate the electricity used for one month and one year
+        double kwhPerDay = (assess.getNumLightbulbs() * assess.getWattage()) / 1000.0;
+        double kwhPerMonth = kwhPerDay * assess.getSchoolDaysPerMonth();
+        double kwhPerYear = kwhPerDay * assess.getSchoolDaysPerYear();
+        // Calculate the yearly GHG emissions produced by the classroom lights
+        double kgCo2ePerYear = kwhPerYear * assess.getCo2ePerKwh();
+        double kgCo2ePerStudentPerYear = kgCo2ePerYear / assess.getNumStudents();
+        // Calculate the number of trees needed to absorb the emissions
+        int numTrees = (int)(kgCo2ePerYear / 12);
+        return new Calculations(kwhPerMonth, kwhPerYear, kgCo2ePerYear, kgCo2ePerStudentPerYear, numTrees);
+    }
+}
