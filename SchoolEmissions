@@ -1,0 +1,21 @@
+public class SchoolEmissions {
+  public static void main(String[] args) { 
+    //Initializing objects for schools
+    //Diego:
+    ClassroomLightingAssessmentV2 Loyola = new ClassroomLightingAssessmentV2("Loyola", 2880, 15, 6, 20, 10, 0.180, 30);
+    //Luke:
+    ClassroomLightingAssessmentV2 Fraser = new ClassroomLightingAssessmentV2("Fraser", 3500, 15, 6, 20, 10, 0.180, 30);        
+    //Matias:
+    ClassroomLightingAssessmentV2 Gonzaga = new ClassroomLightingAssessmentV2("Gonzaga", 3100, 15, 6, 20, 10, 0.180, 30);
+    
+    //Printing each object
+    //Diego, Luke, Matias
+    System.out.println(Loyola);
+    System.out.println();
+    System.out.println(Fraser);
+    System.out.println();
+    System.out.println(Gonzaga);
+    
+  }
+}
+
