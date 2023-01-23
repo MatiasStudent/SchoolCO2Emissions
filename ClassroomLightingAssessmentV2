@@ -1,0 +1,63 @@
+class ClassroomLightingAssessmentV2 {
+  //Declaring instance variables
+  //Luke:
+  private String school;
+  private int lights;
+  private int watts;
+  private int hoursPerDay;
+  private int daysPerMonth;
+  private int monthsPerYear;
+  private double emissions;
+  private int students;
+  
+  //Creating constructor for classroom lights
+  //Matias:
+  public ClassroomLightingAssessmentV2(String schoolName, int numLightbulbs, int wattage, int schoolHoursPerDay, int schoolDaysPerMonth, int schoolMonthsPerYear, double co2ePerKwh, int numStudents) {
+    school = schoolName;
+    lights = numLightbulbs;
+    watts = wattage;
+    hoursPerDay = schoolHoursPerDay;
+    daysPerMonth = schoolDaysPerMonth;
+    monthsPerYear = schoolMonthsPerYear;
+    emissions = co2ePerKwh;
+    students = numStudents;
+    
+  }
+  
+  //Creating calculations for getter methods
+  //Diego:
+  public String getSchoolName() {
+    return school;
+  }
+  
+  public double getKwhPerMonth() {
+    return lights * watts / 1000 * hoursPerDay * daysPerMonth;
+  }
+  
+  public double getKwhPerYear() {
+    return lights * watts / 1000 * hoursPerDay * daysPerMonth * monthsPerYear;
+  }
+  
+  public double getEmissionsPerYear() {
+    return lights * watts / 1000 * hoursPerDay * daysPerMonth * monthsPerYear * emissions;
+  }
+  
+  public double getEmissionsPerStudent() {
+    return lights * watts / 1000 * hoursPerDay * daysPerMonth * monthsPerYear * emissions / students;
+  }
+  
+  public double getNumTrees() {
+    return lights * watts / 1000 * hoursPerDay * daysPerMonth * monthsPerYear * emissions /12;
+  }
+  
+  //Matias, Diego, Luke
+  public String toString(){
+    return "School Name: " + getSchoolName() + "\n" +
+      "Electricity used in classroom for lighting (kWh/month): " + getKwhPerMonth() + "\n" + 
+      "Electricity used in classroom for lighting (kWh/year): " + getKwhPerYear() + "\n" + 
+      "Yearly GHG emissions produced by classroom lights (kg CO2e/year): " + getEmissionsPerYear() + "\n" +
+      "Yearly GHG emissions produced by classroom lights per student (kg CO2e/student/year): " + getEmissionsPerStudent() + "\n" +
+      "Number of trees needed to absorb the emissions: " + getNumTrees();
+    
+  }
+}
